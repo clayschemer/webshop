@@ -1,0 +1,60 @@
+-- version 4.1.6
+-- http://www.phpmyadmin.net
+--
+-- Värd: localhost
+-- Tid vid skapande: 10 sep 2015 kl 13:16
+-- Serverversion: 5.6.16
+-- PHP-version: 5.5.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Databas: `EITF05`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `Items`
+--
+
+CREATE TABLE IF NOT EXISTS `Items` (
+  `title` varchar(50) COLLATE utf8_bin NOT NULL,
+  `price` int(11) NOT NULL,
+  `image_path` varchar(50) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumpning av Data i tabell `Items`
+--
+
+INSERT INTO `Items` (`title`, `price`, `image_path`) VALUES
+('Bicycle 50 x 70', 450, '"../img/bicycle.jpg"'),
+('Exhibition 50 x 70', 500, '"../img/exhibition.jpg"'),
+('Flying 50 x 70', 800, '"../img/flying.jpg"'),
+('Looking Out 50 x 70', 900, '"../img/lookingout.jpg"');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `Users`
+--
+
+CREATE TABLE IF NOT EXISTS `Users` (
+  `user_name` varchar(30) COLLATE utf8_bin NOT NULL,
+  `pass_hash` varchar(255) COLLATE utf8_bin NOT NULL,
+  `name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `address` varchar(50) COLLATE utf8_bin NOT NULL,
+  `login_attempts` int(11) NOT NULL DEFAULT '0',
+  `locked_until` float NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumpning av Data i tabell `Users`
+--
+
+INSERT INTO `Users` (`user_name`, `pass_hash`, `name`, `address`, `login_attempts`, `locked_until`) VALUES
+('LeMertz', '$2y$10$OHIk.d2p04oU406/NP.4CeooxCfolBmDpTlUfFqwn2hP3pk3Rnyue', 'Martin', 'MalmÃ¶', 1, 1439410000);
